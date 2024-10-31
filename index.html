@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <!-- Bootstrap CSS v5.3 -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"         crossorigin="anonymous">
+
+    <style>
+        .language-switcher {
+          text-align: right; /* Alinha no canto direito, pode ajustar conforme necessidade */
+          margin: 10px 10px 10px 10px;
+        }
+        .language-switcher button {
+          background: none;
+          border: none;
+          font-size: 2rem; /* Tamanho dos emojis */
+          cursor: pointer;
+        }
+        .language-switcher button:hover {
+          opacity: 0.7;
+        }
+      </style>
+
+</head>
+
+<body>
+
+    <section id="home" class="bg-dark text-white text-center py-5">
+        <div class="language-switcher">
+            <img src="assets/img/mapa-br.png" alt="Portuguese" width="40" onclick="changeLanguage('pt')">
+            <img src="assets/img/mapa-en.png" alt="English" width="40" onclick="changeLanguage('en')">
+          </div>
+          
+        <div class="container">
+            <img src="assets/img/fernando-perfil_1080x1080.png" alt="Fernando Barboza" class="rounded-circle mb-4" width="150">            
+            <h1 class="display-4">Fernando Barboza</h1>
+            <p id="job-title" class="lead"></p>
+            <a href="#contact" class="btn btn-primary btn-lg mt-3">Contact Me</a>
+        </div>
+    </section>
+    
+    <section id="skills" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Technical Skills</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Frontend</h4>
+                    <ul>
+                        <li>Asp Clássico, Asp .NET, WebForms</li>
+                        <li>HTML5, CSS3</li>
+                        <li>ReactJS (Redux), Angular (NgRx)</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Backend</h4>
+                    <ul>
+                        <li>C#, JavaScript, Python</li>
+                        <li>Autenticação JWT, APIs RESTful</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Databases</h4>
+                    <ul>
+                        <li>MSSQL, Oracle, PostgreSQL, MySQL</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <h4>Languages</h4>
+                    <ul>
+                        <li>VB6, VBA, VBScript, C#, JavaScript, Python</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Design Patterns</h4>
+                    <ul>
+                        <li>Creational, Structural, Behavioral</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Version Control</h4>
+                    <ul>
+                        <li>Git/GitHub, Tortoise SVN, TFS</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <h4>Testing</h4>
+                    <ul>
+                        <li>xUnit, Jest, Selenium</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>DevOps</h4>
+                    <ul>
+                        <li>CI/CD, GitHub Actions, Docker</li>
+                        <li>AWS: CodePipeline, S3, Lambda</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Deployment</h4>
+                    <ul>
+                        <li>AWS RDS (Oracle)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Featured Projects</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="ecommerce-project.jpg" class="card-img-top" alt="E-Commerce Project">
+                        <div class="card-body">
+                            <h5 class="card-title">E-Commerce Platform</h5>
+                            <p class="card-text">Fullstack e-commerce platform using React, .NET Core, and AWS RDS for
+                                Oracle.</p>
+                            <a href="https://github.com/yourusername/ecommerce-project" class="btn btn-primary"
+                                target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="devops-project.jpg" class="card-img-top" alt="DevOps Project">
+                        <div class="card-body">
+                            <h5 class="card-title">DevOps Automation</h5>
+                            <p class="card-text">CI/CD pipeline for automated deployment using AWS CodePipeline and
+                                Docker.</p>
+                            <a href="https://github.com/yourusername/devops-project" class="btn btn-primary"
+                                target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="testing-project.jpg" class="card-img-top" alt="Testing Automation Project">
+                        <div class="card-body">
+                            <h5 class="card-title">Testing Automation</h5>
+                            <p class="card-text">Automated testing framework using Selenium, xUnit, and Jest for a
+                                fullstack application.</p>
+                            <a href="https://github.com/yourusername/testing-project" class="btn btn-primary"
+                                target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="projects" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Featured Projects</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="ecommerce-project.jpg" class="card-img-top" alt="E-Commerce Project">
+                        <div class="card-body">
+                            <h5 class="card-title">E-Commerce Platform</h5>
+                            <p class="card-text">Fullstack e-commerce platform using React, .NET Core, and AWS RDS for
+                                Oracle.</p>
+                            <a href="https://github.com/yourusername/ecommerce-project" class="btn btn-primary"
+                                target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="devops-project.jpg" class="card-img-top" alt="DevOps Project">
+                        <div class="card-body">
+                            <h5 class="card-title">DevOps Automation</h5>
+                            <p class="card-text">CI/CD pipeline for automated deployment using AWS CodePipeline and
+                                Docker.</p>
+                            <a href="https://github.com/yourusername/devops-project" class="btn btn-primary"
+                                target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="testing-project.jpg" class="card-img-top" alt="Testing Automation Project">
+                        <div class="card-body">
+                            <h5 class="card-title">Testing Automation</h5>
+                            <p class="card-text">Automated testing framework using Selenium, xUnit, and Jest for a
+                                fullstack application.</p>
+                            <a href="https://github.com/yourusername/testing-project" class="btn btn-primary"
+                                target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5 bg-dark text-white">
+        <div class="container">
+            <h2 class="text-center mb-4">Get in Touch</h2>
+            <form action="your-backend-url" method="POST" class="text-center">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <textarea name="message" class="form-control" rows="5" placeholder="Your Message"
+                        required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer id="footer" class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>&copy; 2024 Fernando Barboza. All Rights Reserved.</p>
+            <p>Connect with me on <a href="https://www.linkedin.com/in/fernandopbarboza/" target="_blank"
+                    class="text-white">LinkedIn</a> | <a href="https://github.com/fernandopbarboza" target="_blank"
+                    class="text-white">GitHub</a></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper.js v5.3 -->
+    <script src="assets/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="assets/js/languages.js" crossorigin="anonymous"></script>   
+      
+</body>
+
+</html>
