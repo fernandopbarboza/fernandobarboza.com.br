@@ -227,3 +227,38 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+		/* Google-Sheet */
+		const form = document.getElementById('form-contato');
+		const responseMessage = document.getElementById('response-message');
+
+			form.addEventListener('submit', async (event) => {
+			  event.preventDefault();
+        const msg_ok = document.getElementById('msg-ok');
+        const msg_error = document.getElementById('msg-error');
+
+			  const formData = {
+				name: document.getElementById('name').value,
+				email: document.getElementById('email').value,
+				whatsapp: document.getElementById('whatsapp').value,
+        assunto: document.getElementById('assunto').value,
+        mensagem: document.getElementById('mensagem').value,
+				tag: document.getElementById('tag').value
+			  };
+
+			  try {
+				const response = await fetch('https://script.google.com/macros/s/AKfycbxbEYVol74sEGkrqqzTNFEQkyXc88P5aDeielQ_WamwPsIoysDfSUifQbrVT5kPhTiP8w/exec', {
+				  method: 'POST',
+				  body: JSON.stringify(formData)
+				});
+
+				if (response.ok) {
+          msg_ok.innerHTML = 'Mensagem enviada com sucesso! Em breve entrarei em contato.';				  
+          form.reset(); // Limpa o formulário após o envio
+				} else {
+          msg_error.innerHTML = 'Erro ao enviar a mensagem. Por favor, tente novamente.';				  
+				}
+			  } catch (error) {          
+				  responseMessage.textContent = 'Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.';
+			  }
+			});	
