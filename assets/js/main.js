@@ -261,4 +261,13 @@
 			  } catch (error) {          
 				  responseMessage.textContent = 'Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.';
 			  }
-			});	
+			});
+      
+function getActualAge(){
+
+    var Now = new Date();
+    document.getElementById('age').innerHTML = Math.abs(Now.getUTCFullYear() - 1979);
+    
+}      
+
+window.onload = function() { getActualAge(); };
