@@ -1,3 +1,68 @@
+
+//========================================
+// POST
+//========================================
+// Função genérica para carregar e parsear qualquer arquivo (XML ou XSL)
+async function carregarDocumento(url) {
+    const resposta = await fetch(url);
+    if (!resposta.ok) {
+        throw new Error(`Erro ao carregar o arquivo: ${url}`);
+    }
+    const texto = await resposta.text();
+    const parser = new DOMParser();
+    // Identifica se é XSL ou XML comum para parsear corretamente
+    return parser.parseFromString(texto, "application/xml");
+}
+
+// Função principal que faz a mágica de carregar os dados e aplicar o XSL
+async function carregarPostsDoUsuario(nomeUsuario) {
+    const containerDePosts = document.getElementById("posts-container");
+    
+    // Feedback visual de carregamento (opcional)
+    containerDePosts.innerHTML = "<p>Carregando posts...</p>";
+
+    try {
+        // 1. Carrega o XML do usuário (ex: jose.xml) e o template XSL padrão em paralelo
+        const caminhoXml = `./assets/xml/${nomeUsuario.toLowerCase()}.xml`;        
+
+        const [xmlDoc] = await Promise.all([
+            carregarDocumento(caminhoXml)
+        ]);
+
+        containerDePosts.innerHTML = ""; // Limpa o texto de "Carregando posts..." após inserir os posts
+        containerDePosts.innerHTML = xmlDoc.documentElement.innerHTML; // Insere o elemento raiz do XML (que contém os posts) no container
+
+    } catch (erro) {
+        console.error("Erro ao processar os posts:", erro);
+        containerDePosts.innerHTML = `<p style="color: red;">Não foi possível carregar os posts de @${nomeUsuario}.</p>`;
+    }
+}
+
+// 5. Listener de Eventos: Captura o clique nos botões de Story de forma dinâmica
+document.addEventListener("DOMContentLoaded", () => {
+    // Escuta cliques no documento inteiro (delegação de eventos)
+    document.addEventListener("click", (evento) => {
+        // Verifica se o clique foi no botão .story ou em algum elemento dentro dele
+        const botaoStory = evento.target.closest(".story");
+        
+        if (botaoStory.classList.contains('story--has-story')) {
+          botaoStory.classList.remove('story--has-story');
+        } else {
+          botaoStory.classList.add('story--has-story');
+        }
+
+        if (botaoStory) {
+            // Busca o texto de dentro do span class="story__user"
+            const spanUser = botaoStory.querySelector(".story__user");
+            if (spanUser) {
+                const usuario = spanUser.textContent.trim();
+                carregarPostsDoUsuario(usuario);
+            }
+        }
+    });
+});
+
+
 // Elements
 const toggleThemeBtn = document.querySelector('.header__theme-button');
 const storiesContent = document.querySelector('.stories__content');
