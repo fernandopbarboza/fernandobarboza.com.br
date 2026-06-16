@@ -1,4 +1,4 @@
-
+/*
 //========================================
 // POST
 //========================================
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
+*/
 
 // Elements
 const toggleThemeBtn = document.querySelector('.header__theme-button');
@@ -234,3 +234,45 @@ postsContent.forEach((post) => {
     }
   }
 });
+
+
+function LoadImgFamily(prefixFamily, limit) { 
+
+//0. Clear content
+const container = document.getElementById("gallery-container");
+container.innerHTML = "";
+
+// 1. Data containing paths to different images
+const items = [
+{ img: `assets/img/barboza/${prefixFamily}/${prefixFamily} (1).webp`, title: `${prefixFamily}1` }
+];
+
+// Start loop from 2 since 1 is already in your initial array
+for (let seqNumber = 2; seqNumber <= limit; seqNumber++) {
+  
+  // Construct the sequential path
+  const sequentialPath = `assets/img/barboza/${prefixFamily}/${prefixFamily} (${seqNumber}).webp`;
+  
+  // Push the new structured object into your items array
+  items.push({
+    img: sequentialPath,
+    title: `${prefixFamily} - ${seqNumber}`
+  });
+}
+
+
+const template = document.getElementById("card-template");
+
+// 2. Loop through data, clone template, and update image paths
+items.forEach(data => {
+  const clone = template.content.cloneNode(true);
+  
+  const imgElement = clone.querySelector(".card-image");
+  imgElement.src = data.img; // Inserts the unique image path
+  imgElement.alt = data.title;
+    
+  //clone.querySelector(".card-title").textContent = data.title;
+  container.appendChild(clone);
+});
+
+}
